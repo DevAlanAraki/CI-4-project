@@ -59,7 +59,7 @@ nav ul.nav li.nav-item a.nav-link:hover {
     color: #d4d4d4;
 }
 
-/* PARABOX */
+/* Parabox */
 
 .para-container {
     font-family: 'Red Hat Text', sans-serif;
@@ -74,17 +74,20 @@ nav ul.nav li.nav-item a.nav-link:hover {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .parabox {
     background: rgba(255, 255, 255, 0.3);
-    margin-top: 22%;
-    right: 80px;
-    position: fixed;
     border-radius: 9px;
     width: 391px;
     padding: 12px;
     text-align: center;
+    margin-left: auto;
+    justify-content: center;
+    align-self: flex-end;
+    margin-right: 3%;
 }
 
 h1 {
@@ -109,4 +112,12 @@ h1 {
     font-weight: 700;
     letter-spacing: .5px;
     font-size: .875rem;
-  }
+}
+
+/* Highlight Container */
+
+.highlight {
+    width: 100%;
+    min-height: 60vh;
+    background-color: var(--color);
+}
