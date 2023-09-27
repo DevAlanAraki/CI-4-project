@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;700&display=swap');
 
 /* Reset some default styles */
 * {
@@ -8,6 +9,11 @@
 }
 
 /* Global styles */
+
+:root {
+    --color: #333;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     margin: 0;
@@ -51,4 +57,26 @@ nav ul.nav li.nav-item a.nav-link {
 
 nav ul.nav li.nav-item a.nav-link:hover {
     color: #d4d4d4;
+}
+
+/* PARABOX */
+
+.para-container {
+    text-align: center;
+    color: var(--color);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(/assets/images/1st-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.parabox {
+    background: rgba(79, 79, 79, 0.3);
+
 }
