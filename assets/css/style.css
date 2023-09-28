@@ -56,7 +56,7 @@ nav ul.nav li.nav-item a.nav-link {
 }
 
 nav ul.nav li.nav-item a.nav-link:hover {
-    color: #d4d4d4;
+    color: #f94829;
 }
 
 /* Parabox */
@@ -74,7 +74,7 @@ nav ul.nav li.nav-item a.nav-link:hover {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
 }
 
@@ -169,7 +169,7 @@ h3 {
     margin-top: 1em;
 }
 
-.card > a {
+.cards>a {
     margin-bottom: 2em;
 }
 
@@ -178,7 +178,7 @@ h3 {
     display: flex;
     max-width: 320px;
     background-color: white;
-    ;
+    padding-bottom: 1.2em;
     flex-direction: column;
     align-items: center;
     border-radius: .5em;
@@ -210,10 +210,45 @@ h3 {
     background-image: url(../images/img-meeting-3.jpg);
 }
 
+.img-fourth {
+    background-image: url(../images/img-meeting-4.jpg);
+}
+
 .second {
     background-image: url(/assets/images/2nd-bg.jpg);
     background-attachment: fixed;
     height: 1200px;
     flex-direction: row;
     gap: 1.6em;
+}
+
+
+/* Footer */
+
+footer {
+    bottom: 0;
+    width: 100%;
+    height: 300px;
+    background: var(--color);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+    color: #f94829;
+}
+
+.form-control {
+    background: #212529;
+    border-color: #545454;
+}
+
+.form-control:focus {
+    background: #212529;
 }
