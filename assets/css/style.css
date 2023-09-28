@@ -252,3 +252,9 @@ a:focus {
 .form-control:focus {
     background: #212529;
 }
+
+/* Media query */
+
+@media (max-width: 405px) {
+    
+}
