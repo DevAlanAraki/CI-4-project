@@ -150,7 +150,6 @@ h1 {
 
 .hero-banner__image {
     border-radius: 20px;
-    position: fixed;
     transform: rotate(-15deg);
     width: 450px;
 }
@@ -170,11 +169,12 @@ h3 {
     margin-top: 1em;
 }
 
-.card>a {
+.card > a {
     margin-bottom: 2em;
 }
 
 .item {
+    width: 300px;
     display: flex;
     max-width: 320px;
     background-color: white;
@@ -199,15 +199,15 @@ h3 {
 }
 
 .img-first {
-    background-image: url(X);
+    background-image: url(../images/img-meeting-1.jpg);
 }
 
 .img-second {
-    background-image: url(X);
+    background-image: url(../images/img-meeting-2.jpg);
 }
 
 .img-third {
-    background-image: url(X);
+    background-image: url(../images/img-meeting-3.jpg);
 }
 
 .second {
