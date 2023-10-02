@@ -253,8 +253,185 @@ a:focus {
     background: #212529;
 }
 
-/* Media query */
+/* Hamburger menu styles */
 
-@media (max-width: 405px) {
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav ul.nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav ul.nav li.nav-item {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+nav ul.nav li.nav-item a.nav-link {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul.nav li.nav-item a.nav-link:hover {
+    color: #f94829;
+}
+
+nav ul.nav .close-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+}
+
+nav ul.nav.show .close-btn {
+    display: block;
+}
+
+nav ul.nav .close-btn span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Hamburger icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* Media query for small screens */
+
+@media only screen and (max-width: 767px) and (min-width: 400px) {
+
+    nav ul.nav {
+        display: none;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #333;
+    }
+
+    nav ul.nav.show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul.nav li.nav-item {
+        margin: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    header {
+        position: relative;
+    }
+
+    .parabox {
+        margin-left: auto;
+        margin-right: auto;
+        align-self: normal;
+    }
+
+    .hero-banner__stroked-title {
+        -webkit-text-stroke: 1px white;
+    }
+
+    .hero-banner__title {
+        font-size: 64px;
+    }
+
+    .hero-banner__image {
+        width: 200px;
+    }
+
+    .hero-banner {
+        height: 300px;
+    }
+
+    .second {
+        height: auto;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .item {
+        margin: 1.5rem 0;
+    }
+
+    footer {
+        height: 200px;
+    }
+
+    footer .container {
+        height: auto;
+        margin: auto;
+        text-align: center;
+    }
+
+    .pb-4,
+    .py-4 {
+        padding-bottom: 1.5rem;
+    }
+
+    .pt-4,
+    .py-4 {
+        padding-top: 1.5rem;
+    }
+
+    .h1 {
+        font-size: 1.5rem;
+    }
+
+    #quick-links,
+    #social-medias,
+    #newsletter {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 728px) {
+
+    nav ul.nav {
+        flex-direction: initial;
+    }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+
+    .pb-4, .py-4 {
+        padding-bottom: 0.5rem!important;
+    }
+    .pt-4, .py-4 {
+        padding-top: 0.5rem!important;
+    }
     
+    #social-medias, #newsletter .small.text-muted {
+        display: none;
+    }
+
+    .mb-3, .my-3 {
+        margin-bottom: 0.5rem!important;;
+    }
 }
