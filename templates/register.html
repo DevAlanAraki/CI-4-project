@@ -1,8 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 
-<section>
-    <h1>Register</h1>
-</section>
+<div class="container">
+    <h1>Event Registration</h1>
+    <form action="{{ url_for('register') }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="event">Event:</label>
+        <select id="event" name="event" required>
+            <option value="conference">Conference</option>
+            <option value="workshop">Workshop</option>
+            <option value="party">Party</option>
+        </select>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
 
 {% endblock %}

@@ -70,7 +70,7 @@ nav ul.nav li.nav-item a.nav-link:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(/assets/images/1st-bg.jpg);
+    background-image: url(../images/1st-bg.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -215,7 +215,7 @@ h3 {
 }
 
 .second {
-    background-image: url(/assets/images/2nd-bg.jpg);
+    background-image: url(../images/2nd-bg.jpg);
     background-attachment: fixed;
     height: 1200px;
     flex-direction: row;
@@ -315,6 +315,8 @@ nav ul.nav .close-btn span {
     margin: 6px 0;
     transition: 0.4s;
 }
+
+/* Registration form */
 
 /* Media query for small screens */
 
