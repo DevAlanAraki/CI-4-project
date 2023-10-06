@@ -75,11 +75,14 @@ nav ul.nav li.nav-item a.nav-link:hover {
     background-position: center;
     background-attachment: fixed;
     align-items: center;
-    position: relative;
     justify-content: center;
 }
 
-.para-container h1 {
+#call-box {
+    position: relative;
+}
+
+#call-box h1 {
     position: absolute;
     top: 302px;
     text-align: center;
