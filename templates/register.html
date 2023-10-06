@@ -1,20 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
+<div class="reg-container">
     <h1>Event Registration</h1>
     <form action="{{ url_for('register') }}" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <label for="name">Rider name:</label>
+        <input type="text" id="name" name="name" placeholder="Rider name" required>
+
+        <label for="name">Guest name (if applicable):</label>
+        <input type="text" id="name" name="name" placeholder="Guest name if you have anyone">
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
 
         <label for="event">Event:</label>
         <select id="event" name="event" required>
+            <option value="party">Meetings</option>
             <option value="conference">Conference</option>
-            <option value="workshop">Workshop</option>
-            <option value="party">Party</option>
+            <option value="workshop">Workshop Sales</option>            
         </select>
 
         <button type="submit">Register</button>

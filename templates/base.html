@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speedy Motorcycle Club</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
@@ -63,7 +64,7 @@
                     <h5 class="h1 text-white">Speedy Motorcycle Club</h5>
                     <p class="small text-muted">Sometimes it takes a whole tank of fuel before you can think straight
                     </p>
-                    <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-danger"
+                    <p class="small text-muted mb-0">Copyrights &copy; <span id="copyright"></span>. All rights reserved <a class="text-danger"
                             href="#">speedy-motorcycleclub.com</a></p>
                 </div>
                 <div id="quick-links" class="col-lg-2 col-md-6">
@@ -101,6 +102,11 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        $("#copyright").text(new Date().getFullYear());
+    </script>
+
 </body>
 
 </html>

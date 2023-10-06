@@ -317,6 +317,51 @@ nav ul.nav .close-btn span {
 }
 
 /* Registration form */
+.reg-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    margin-top: 210px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reg-containerh1 {
+    text-align: center;
+    color: #333;
+}
+
+.reg-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.reg-container label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.reg-container input,
+select {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.reg-container button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.reg-container button:hover {
+    background-color: #45a049;
+}
 
 /* Media query for small screens */
 
