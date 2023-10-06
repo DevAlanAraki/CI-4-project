@@ -75,7 +75,18 @@ nav ul.nav li.nav-item a.nav-link:hover {
     background-position: center;
     background-attachment: fixed;
     align-items: center;
+    position: relative;
     justify-content: center;
+}
+
+.para-container h1 {
+    position: absolute;
+    top: 302px;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 55px;
+    padding: 20px;
 }
 
 .parabox {
