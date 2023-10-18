@@ -2,31 +2,25 @@
 {% block content %}
 
 <div class="reg-container">
-    <h1>Event Registrations</h1>
-    <ul>
-        {% for registration in registrations %}
-            <li>
-                Name: {{ registration.name }}<br>
-                Guest Name: {{ registration.guest_name }}<br>
-                Email: {{ registration.email }}<br>
-                Event: {{ registration.event }}<br>
-                
-                <a href="{{ url_for('edit', registration_id=registration.id) }}">Edit</a>
-                <a href="{{ url_for('delete', registration_id=registration.id) }}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <h2>Create New Record</h2>
+    <h1>Event Registration</h1>
     <form action="{{ url_for('register') }}" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="guest_name">Guest name:</label>
-        <input type="text" id="guest_name" name="guest_name">
+        <label for="name">Rider name:</label>
+        <input type="text" id="name" name="name" placeholder="Rider name" required>
+
+        <label for="name">Guest name (if applicable):</label>
+        <input type="text" id="name" name="name" placeholder="Guest name if you have anyone">
+
         <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+
         <label for="event">Event:</label>
-        <input type="text" id="event" name="event" required>
-        <button type="submit">Create</button>
+        <select id="event" name="event" required>
+            <option value="party">Meetings</option>
+            <option value="conference">Conference</option>
+            <option value="workshop">Workshop Sales</option>            
+        </select>
+
+        <button type="submit">Register</button>
     </form>
 </div>
 
