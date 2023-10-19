@@ -1,0 +1,15 @@
+[
+    {
+      "rider_name": "John",
+      "guest_name": "Jane",
+      "email": "john@example.com",
+      "event": "party"
+    },
+    {
+      "rider_name": "Alice",
+      "guest_name": null,
+      "email": "alice@example.com",
+      "event": "conference"
+    }
+  ]
+  
