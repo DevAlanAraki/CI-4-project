@@ -1,8 +1,8 @@
 [
     {
-        "name": "ABC",
-        "guest_name": "DEF",
-        "email": "abc@test.com",
-        "event": "conference"
+        "name": "Alan",
+        "guest_name": "Erica",
+        "email": "alan@test.com",
+        "event": "workshop"
     }
 ]

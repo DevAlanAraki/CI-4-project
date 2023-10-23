@@ -12,9 +12,11 @@ if os.path.exists(json_file_path):
     with open(json_file_path, "r") as json_data:
         registrations = json.load(json_data)
 
+
 @app.route("/")
 def index():
     return render_template("index.html", registrations=registrations, enumerate=enumerate)
+
 
 @app.route("/about")
 def about():
@@ -24,32 +26,6 @@ def about():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
-
-
-@app.route("/edit", methods=["GET", "POST"])
-def edit(index):
-    if request.method == "POST":
-        # Get form data
-        name = request.form.get("name")
-        guest_name = request.form.get("guest_name")
-        email = request.form.get("email")
-        event = request.form.get("event")
-
-        # Update the registration
-        registrations[index] = {
-            "name": name, "guest_name": guest_name, "email": email, "event": event}
-
-        # Redirect to the index page with the updated registrations
-        return redirect(url_for("index"))
-
-    registration = registrations[index]
-    return render_template("edit.html", registration=registration, index=index)
-
-
-@app.route("/delete/<int:index>")
-def delete(index):
-    del registrations[index]
-    return redirect(url_for("index"))
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -62,7 +38,8 @@ def register():
         event = request.form.get("event")
 
         # Create a registration dictionary
-        registration = {"name": name, "guest_name": guest_name, "email": email, "event": event}
+        registration = {"name": name, "guest_name": guest_name,
+                        "email": email, "event": event}
 
         # Add registration to the list
         registrations.append(registration)
@@ -75,6 +52,11 @@ def register():
         return redirect(url_for("index"))
 
     return render_template("register.html")
+
+@app.route("/delete/<int:index>")
+def delete(index):
+    del registrations[index]
+    return redirect(url_for("index"))
 
 if __name__ == "__main__":
     app.run(

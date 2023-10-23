@@ -7,7 +7,6 @@
             <h1>Here is where you can find the joy</h1>
             <p>Discovering the pure joy of riding on two wheels: Your ultimate motorcycle destination</p>
             <a href="{{url_for('register')}}">Subscribe for our next event</a>
-
         </div>
     </div>
 </section>
@@ -54,10 +53,13 @@
             </div>
         </div>
     </div>
+</section>
 
+<section>
     <div class="db-table">
         <table>
             <thead>
+                <h1 class="db-title">Subscribers</h1>
                 <tr>
                     <th>Name</th>
                     <th>Guest Name</th>
@@ -75,17 +77,6 @@
             </tbody>
         </table>
     </div>
-</section>
-
-<section>
-    {% for index, registration in enumerate(registrations) %}
-    <tr>
-        <!-- existing table cells... -->
-        <td><a href="{{ url_for('edit', index=index) }}">Edit</a></td>
-        <td><a href="{{ url_for('delete', index=index) }}">Delete</a></td>
-    </tr>
-    {% endfor %}
-
 </section>
 
 {% endblock %}
