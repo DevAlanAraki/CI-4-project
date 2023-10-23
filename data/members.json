@@ -1,14 +1,8 @@
 [
-  {
-    "name": "Alan Araki",
-    "country": "Brazil",
-    "motorbike": "Yamaha FZR 1000",
-    "image_source": "static/images/img-meeting-1.jpg"
-  },
-  {
-    "rider_name": "Test",
-    "guest_name": null,
-    "email": "alan@test.com",
-    "event": "party"
-  }
+    {
+        "name": "ABC",
+        "guest_name": "DEF",
+        "email": "abc@test.com",
+        "event": "conference"
+    }
 ]

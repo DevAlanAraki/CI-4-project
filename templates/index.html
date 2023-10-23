@@ -20,7 +20,7 @@
 
 <section>
     <div id="call-box" class="para-container second">
-        <h1>Who will be there? Latest registered riders.</h1>
+        <h1>Who will be there?</h1>
         <div class="item">
             <img class="img img-second" src="static/images/img-meeting-1.jpg" alt="Latest rider">
             <div class="cards">
@@ -54,6 +54,38 @@
             </div>
         </div>
     </div>
+
+    <div class="db-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Guest Name</th>
+                    <th>Event</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for registration in registrations %}
+                <tr>
+                    <td>{{ registration.name }}</td>
+                    <td>{{ registration.guest_name }}</td>
+                    <td>{{ registration.event }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section>
+    {% for index, registration in enumerate(registrations) %}
+    <tr>
+        <!-- existing table cells... -->
+        <td><a href="{{ url_for('edit', index=index) }}">Edit</a></td>
+        <td><a href="{{ url_for('delete', index=index) }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+
 </section>
 
 {% endblock %}
