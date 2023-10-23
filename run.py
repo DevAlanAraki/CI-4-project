@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, abort
 
 app = Flask(__name__)
 
@@ -63,6 +63,10 @@ def register():
 
 @app.route("/edit/<int:index>", methods=["GET", "POST"])
 def edit(index):
+    # Check if the user is logged in
+    if "user_email" not in session:
+        abort(401)  # HTTP 401 Unauthorized
+
     if request.method == "POST":
         # Get form data
         name = request.form.get("name")
@@ -70,19 +74,33 @@ def edit(index):
         email = request.form.get("email")
         event = request.form.get("event")
 
-        # Update the registration
-        registrations[index] = {"name": name, "guest_name": guest_name, "email": email, "event": event}
+        # Check if the logged-in user owns this registration
+        if session["user_email"] == registrations[index]["email"]:
+            # Update the registration
+            registrations[index] = {"name": name, "guest_name": guest_name, "email": email, "event": event}
 
-        # Redirect to the index page with the updated registrations
-        return redirect(url_for("index"))
+            # Redirect to the index page with the updated registrations
+            return redirect(url_for("index"))
+        else:
+            # User doesn't have permission, handle accordingly (redirect, abort, etc.)
+            abort(403)  # HTTP 403 Forbidden
 
     registration = registrations[index]
     return render_template("edit.html", registration=registration, index=index)
 
 @app.route("/delete/<int:index>")
 def delete(index):
-    del registrations[index]
-    return redirect(url_for("index"))
+    # Check if the user is logged in
+    if "user_email" not in session:
+        abort(401)  # HTTP 401 Unauthorized
+
+    # Check if the logged-in user owns this registration
+    if session["user_email"] == registrations[index]["email"]:
+        del registrations[index]
+        return redirect(url_for("index"))
+    else:
+        # User doesn't have permission, handle accordingly (redirect, abort, etc.)
+        abort(403)  # HTTP 403 Forbidden
 
 if __name__ == "__main__":
     app.run(
