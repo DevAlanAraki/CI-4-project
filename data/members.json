@@ -1,8 +1,26 @@
 [
     {
         "name": "Alan",
-        "guest_name": "Erica",
+        "guest_name": "Greg",
         "email": "alan@test.com",
         "event": "workshop"
+    },
+    {
+        "name": "Madhu",
+        "guest_name": "Dakshit",
+        "email": "madhu@test.com",
+        "event": "conference"
+    },
+    {
+        "name": "Madhu",
+        "guest_name": "",
+        "email": "madhu@test.com",
+        "event": "party"
+    },
+    {
+        "name": "Madhu",
+        "guest_name": "",
+        "email": "madhu@test.com",
+        "event": "party"
     }
 ]
