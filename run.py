@@ -4,6 +4,9 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
+# Initialize an empty list to store registration
+registrations = []
+
 # Define the path to the JSON file
 json_file_path = "data/members.json"
 
@@ -12,24 +15,23 @@ if os.path.exists(json_file_path):
     with open(json_file_path, "r") as json_data:
         registrations = json.load(json_data)
 
-
 @app.route("/")
 def index():
     return render_template("index.html", registrations=registrations, enumerate=enumerate)
-
 
 @app.route("/about")
 def about():
     return render_template("about.html")
 
-
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
 
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    # Provide a default value for index
+    index = None
+
     if request.method == "POST":
         # Get form data
         name = request.form.get("name")
@@ -48,10 +50,32 @@ def register():
         with open(json_file_path, "w") as json_file:
             json.dump(registrations, json_file, indent=4)
 
+        # Store the user's email in the session
+        session["user_email"] = email
+
         # Redirect to the index page with the updated registrations
         return redirect(url_for("index"))
 
-    return render_template("register.html")
+    # Pass the index value to the template
+    return render_template("register.html", index=index)
+
+@app.route("/edit/<int:index>", methods=["GET", "POST"])
+def edit(index):
+    if request.method == "POST":
+        # Get form data
+        name = request.form.get("name")
+        guest_name = request.form.get("guest_name")
+        email = request.form.get("email")
+        event = request.form.get("event")
+
+        # Update the registration
+        registrations[index] = {"name": name, "guest_name": guest_name, "email": email, "event": event}
+
+        # Redirect to the index page with the updated registrations
+        return redirect(url_for("index"))
+
+    registration = registrations[index]
+    return render_template("edit.html", registration=registration, index=index)
 
 @app.route("/delete/<int:index>")
 def delete(index):
