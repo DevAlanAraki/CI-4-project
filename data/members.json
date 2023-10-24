@@ -40,5 +40,12 @@
         "email": "maria@test.com",
         "password": "pbkdf2:sha256:600000$gTkOcB1V3E08kdWU$31aec569c27070010165497980e3d29af0ea49203f0e94918f55dbbeb294705c",
         "event": "Paris"
+    },
+    {
+        "name": "Joao",
+        "guest_name": "Marcio",
+        "email": "joao@test.com",
+        "password": "pbkdf2:sha256:600000$8fTzjm2ESa9J3P1H$b14b0e8ddb90ee527ef006a87b6bb7ebae2ba24b75f4d33e60beeca7b0a6869b",
+        "event": "S\u00e3o Paulo"
     }
 ]

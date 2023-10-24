@@ -1,12 +1,16 @@
 import os
 import json
+
 from flask import Flask, render_template, request, redirect, url_for, session, abort, flash
+if os.path.exists("env.py"):
+    import env
+
 from flask_mail import Mail, Message
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+app.secret_key = os.environ.get("SECRET_KEY")
 
 mail = Mail(app)
 
@@ -49,10 +53,12 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/contact")
-def show_contact_form():
-    return render_template("contact.html")
-
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        flash("Thanks {}, we have received your message!".format(
+            request.form.get("name")))
+    return render_template("contact.html", page_title="contact")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -197,35 +203,6 @@ def logout():
     session.pop("user_email", None)
 
     return redirect(url_for("index"))
-
-@app.route("/contact", methods=["GET", "POST"])
-def contact():
-    if request.method == "POST":
-        name = request.form.get("name")
-        email = request.form.get("email")
-        message = request.form.get("message")
-
-        # Send email
-        try:
-            msg = Message('New Contact Form Submission',
-                sender=email,
-                recipients=['alanaraki90@gmail.com'],
-                html=f"<p>Name: {name}</p><p>Email: {email}</p><p>Message:<br>{message}</p>")
-
-            msg.body = f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
-
-            mail.send(msg)
-
-            flash("Your message has been sent successfully!", "success")
-        except Exception as e:
-            error_message = f"An error occurred. Please try again later. Details: {str(e)}"
-            print(error_message)
-            flash(error_message, "error")
-
-        return redirect(url_for("contact"))
-
-    return render_template("contact.html")
-
 
 if __name__ == "__main__":
     app.run(
