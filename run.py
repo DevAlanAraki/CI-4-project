@@ -9,13 +9,13 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 # Flask-Mail configuration
-app.config['MAIL_SERVER'] = 'your_mail_server'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'your_username'
-app.config['MAIL_PASSWORD'] = 'your_password'
-app.config['MAIL_DEFAULT_SENDER'] = 'your_email@example.com'
+app.config['MAIL_USERNAME'] = 'alanaraki90@gmail.com'
+app.config['MAIL_PASSWORD'] = 'pqpk utfp fade ciji'
+app.config['MAIL_DEFAULT_SENDER'] = 'alanaraki90@gmail.com'
 
 mail = Mail(app)
 
@@ -204,7 +204,7 @@ def contact():
         email = request.form.get("email")
         message = request.form.get("message")
 
-        # Validate the form data (you can add more validation as needed)
+        # Validate the form data
 
         # Send email
         try:
