@@ -12,18 +12,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
 
-mail = Mail(app)
-
-# Flask-Mail configuration
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'alanaraki90@gmail.com'
-app.config['MAIL_PASSWORD'] = 'pqpk utfp fade ciji'
-app.config['MAIL_DEFAULT_SENDER'] = 'alanaraki90@gmail.com'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-
-
 # Initialize an empty list to store registration
 registrations = []
 
