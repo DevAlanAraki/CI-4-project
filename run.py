@@ -146,7 +146,8 @@ def edit(index):
                 "name": name, "guest_name": guest_name, "email": email, "event": event}
 
             # Redirect to the index page with the updated registrations
-            return redirect(url_for("index"))
+            return render_template("edit.html", registration=registrations, index=index, edit_success=True)
+            # Pass the index value to the template
         else:
             # User doesn't have permission, handle accordingly (redirect, abort, etc.)
             abort(403)  # HTTP 403 Forbidden
@@ -170,7 +171,6 @@ def delete(index):
     else:
         # User doesn't have permission, handle accordingly (redirect, abort, etc.)
         abort(403)  # HTTP 403 Forbidden
-
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

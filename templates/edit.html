@@ -3,6 +3,13 @@
 
 <div class="reg-container">
     <h1>Edit Registration</h1>
+
+    {% if edit_success %}
+        <div class="success-message">
+            <p>Update successful! The registration has been edited.</p>
+        </div>
+    {% endif %}
+
     <form action="{{ url_for('edit', index=index) }}" method="post">
         <label for="name">Rider name:</label>
         <input type="text" id="name" name="name" value="{{ registration.name }}" required>
