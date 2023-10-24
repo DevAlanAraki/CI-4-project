@@ -2,7 +2,7 @@
 
 Welcome to the Speedy Motorcycle Group Website! This web application allows riders to register for upcoming meetings, workshops, and events organized by the motorcycle group.
 
-![The website displayed in different dispositives](/assets/images-readme/responsive.jpg)
+![The website displayed in different dispositives](/static/images/responsive-test.jpg)
 
 ## Features
 
