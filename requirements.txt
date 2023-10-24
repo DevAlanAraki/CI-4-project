@@ -1,0 +1,7 @@
+blinker==1.6.3
+click==8.1.7
+flash==1.0.3
+Flask==3.0.0
+Flask-Mail==0.9.1
+itsdangerous==2.1.2
+Werkzeug==3.0.0
