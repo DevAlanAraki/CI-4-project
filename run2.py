@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, render_template, request, redirect, url_for, session, abort
+from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify, make_response
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -19,23 +19,28 @@ if os.path.exists(json_file_path):
     with open(json_file_path, "r") as json_data:
         registrations = json.load(json_data)
 
+
 def get_stored_hashed_password(email):
     for registration in registrations:
         if registration["email"] == email:
             return registration["password"]
     return None  # Return None if the email is not found
 
+
 @app.route("/")
 def index():
     return render_template("index.html", registrations=registrations, enumerate=enumerate)
+
 
 @app.route("/about")
 def about():
     return render_template("about.html")
 
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -51,7 +56,8 @@ def register():
         event = request.form.get("event")
 
         # Hash the password before storing it
-        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+        hashed_password = generate_password_hash(
+            password, method='pbkdf2:sha256')
 
         # Create a registration dictionary
         registration = {"name": name, "guest_name": guest_name,
@@ -73,6 +79,7 @@ def register():
     # Pass the index value to the template
     return render_template("register.html", index=index)
 
+
 def login_required(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
@@ -80,6 +87,7 @@ def login_required(func):
             return redirect(url_for("login"))
         return func(*args, **kwargs)
     return decorated_function
+
 
 def ownership_required(func):
     @wraps(func)
@@ -103,6 +111,7 @@ def ownership_required(func):
 
     return decorated_function
 
+
 @app.route("/edit/<int:index>", methods=["GET", "POST"])
 @login_required
 @ownership_required
@@ -121,16 +130,22 @@ def edit(index):
         # Check if the logged-in user owns this registration
         if session["user_email"] == registrations[index]["email"]:
             # Update the registration
-            registrations[index] = {"name": name, "guest_name": guest_name, "email": email, "event": event}
+            registrations[index] = {
+                "name": name, "guest_name": guest_name, "email": email, "event": event}
 
-            # Redirect to the index page with the updated registrations
-            return redirect(url_for("index"))
+            # Save registrations to the JSON file
+            with open(json_file_path, "w") as json_file:
+                json.dump(registrations, json_file, indent=4)
+
+            # Return a JSON response indicating success
+            return jsonify(success=True)
         else:
-            # User doesn't have permission, handle accordingly (redirect, abort, etc.)
-            abort(403)  # HTTP 403 Forbidden
+            # User doesn't have permission, return a JSON response indicating failure
+            response = make_response(jsonify(
+                success=False, message="Forbidden Access: You do not have permission to edit this registration."), 403)
+            response.headers['Content-Type'] = 'application/json'
+            return response
 
-    registration = registrations[index]
-    return render_template("edit.html", registration=registration, index=index)
 
 @app.route("/delete/<int:index>")
 @login_required
@@ -147,6 +162,7 @@ def delete(index):
     else:
         # User doesn't have permission, handle accordingly (redirect, abort, etc.)
         abort(403)  # HTTP 403 Forbidden
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -166,11 +182,12 @@ def login():
 
     return render_template("login.html")
 
+
 @app.route("/logout")
 def logout():
-    # Clear the user's email from the session
     session.pop("user_email", None)
     return redirect(url_for("index"))
+
 
 if __name__ == "__main__":
     app.run(
