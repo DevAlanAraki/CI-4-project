@@ -389,7 +389,8 @@ table {
     margin-top: 20px;
 }
 
-th, td {
+th,
+td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -533,31 +534,7 @@ tr:hover {
 
 /* Media query for small screens */
 
-@media only screen and (max-width: 399px) {
-    nav ul.nav {
-        display: none;
-        width: 100%;
-        text-align: center;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: #333;
-    }
-
-    nav ul.nav.show {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul.nav li.nav-item {
-        margin: 0;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
+@media only screen and (max-width: 767px) {
     h1 {
         font-size: 2rem;
     }
@@ -581,6 +558,7 @@ tr:hover {
 
     #call-box {
         flex-direction: column;
+        padding-top: 70px;
     }
 
     .img {
@@ -616,13 +594,13 @@ tr:hover {
         text-align: center;
         margin-top: 20px;
 
-    h1 {
-        font-size: 1.8rem;
+        h1 {
+            font-size: 1.8rem;
+        }
     }
 }
 
-@media only screen and (max-width: 767px) and (min-width: 400px) {
-
+@media only screen and (max-width:799px) {
     nav ul.nav {
         display: none;
         width: 100%;
@@ -646,6 +624,9 @@ tr:hover {
     .hamburger {
         display: flex;
     }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 400px) {
 
     header {
         position: relative;
@@ -736,19 +717,25 @@ tr:hover {
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
 
-    .pb-4, .py-4 {
-        padding-bottom: 0.5rem!important;
+    .pb-4,
+    .py-4 {
+        padding-bottom: 0.5rem !important;
     }
-    .pt-4, .py-4 {
-        padding-top: 0.5rem!important;
+
+    .pt-4,
+    .py-4 {
+        padding-top: 0.5rem !important;
     }
-    
-    #social-medias, #newsletter .small.text-muted {
+
+    #social-medias,
+    #newsletter .small.text-muted {
         display: none;
     }
 
-    .mb-3, .my-3 {
-        margin-bottom: 0.5rem!important;;
+    .mb-3,
+    .my-3 {
+        margin-bottom: 0.5rem !important;
+        ;
     }
 
     .contact-container h1 {
