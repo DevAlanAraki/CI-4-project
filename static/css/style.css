@@ -377,7 +377,249 @@ select {
     background-color: #45a049;
 }
 
+/* REGISTRATION TABLE */
+
+.db-table {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.db-title {
+    text-align: center;
+}
+
+/* Login page styles */
+
+.login-container {
+    font-family: 'Red Hat Text', sans-serif;
+    text-align: center;
+    color: var(--color);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-container h1 {
+    color: darkslategrey;
+}
+
+.login-container form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container label {
+    margin-top: 10px;
+    font-weight: bold;
+    display: block;
+}
+
+.login-container input {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.login-container button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.login-container button:hover {
+    background-color: #45a049;
+}
+
+/* Contact form styles */
+
+.contact-container {
+    font-family: 'Red Hat Text', sans-serif;
+    text-align: center;
+    color: var(--color);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.contact-container h1 {
+    color: darkslategrey;
+    padding-top: 12rem;
+    padding-bottom: 2rem;
+}
+
+.contact-container form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container label {
+    margin-top: 10px;
+    font-weight: bold;
+    display: block;
+}
+
+.contact-container input,
+.contact-container textarea {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.contact-container button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.contact-container button:hover {
+    background-color: #45a049;
+}
+
+
 /* Media query for small screens */
+
+@media only screen and (max-width: 399px) {
+    nav ul.nav {
+        display: none;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #333;
+    }
+
+    nav ul.nav.show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul.nav li.nav-item {
+        margin: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .parabox {
+        border-radius: 9px;
+        width: 338px;
+    }
+
+    .parabox a {
+        padding: 0.5em 0.5em;
+    }
+
+    .hero-banner__image {
+        width: 310px;
+    }
+
+    .hero-banner__title {
+        font-size: 62px;
+    }
+
+    #call-box {
+        flex-direction: column;
+    }
+
+    .img {
+        width: 88%;
+        height: 123px;
+    }
+
+    #call-box h1 {
+        top: 19px;
+        border-radius: 6px;
+        padding: 9px;
+    }
+
+    .item {
+        width: 216px;
+        max-width: 320px;
+        padding-bottom: 0.3rem;
+        flex-direction: column;
+    }
+
+    h3 {
+        font-weight: 700;
+        font-size: 1rem;
+        margin-top: 0.3em;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 0.3rem;
+    }
+
+    .db-title {
+        text-align: center;
+        margin-top: 20px;
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
 
 @media only screen and (max-width: 767px) and (min-width: 400px) {
 
@@ -470,6 +712,19 @@ select {
     #newsletter {
         display: none;
     }
+
+    .reg-container {
+        margin-top: 45px;
+    }
+
+    .contact-container {
+        min-height: 0;
+    }
+
+    .contact-container h1 {
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+    }
 }
 
 @media screen and (min-width: 728px) {
@@ -495,155 +750,9 @@ select {
     .mb-3, .my-3 {
         margin-bottom: 0.5rem!important;;
     }
-}
 
-/* REGISTRATION TABLE */
-
-.db-table {
-    margin: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-thead {
-    background-color: #f2f2f2;
-}
-
-tr:hover {
-    background-color: #f5f5f5;
-}
-
-.db-title {
-    text-align: center;
-}
-
-/* Login page styles */
-
-.login-container {
-    font-family: 'Red Hat Text', sans-serif;
-    text-align: center;
-    color: var(--color);
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    align-items: center;
-    justify-content: center;
-    padding: 20px; /* Adjust as needed */
-}
-
-.login-container h1 {
-    color: #fff; /* Adjust text color as needed */
-}
-
-.login-container form {
-    max-width: 400px; /* Adjust form width as needed */
-    margin: 20px auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.7); /* Adjust background color and opacity as needed */
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-container label {
-    margin-top: 10px;
-    font-weight: bold;
-    display: block;
-}
-
-.login-container input {
-    margin-bottom: 15px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 100%;
-}
-
-.login-container button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-}
-
-.login-container button:hover {
-    background-color: #45a049;
-}
-
-/* Contact form styles */
-
-.contact-container {
-    font-family: 'Red Hat Text', sans-serif;
-    text-align: center;
-    color: var(--color);
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    align-items: center;
-    justify-content: center;
-    padding: 20px; /* Adjust as needed */
-}
-
-.contact-container h1 {
-    color: #fff; /* Adjust text color as needed */
-}
-
-.contact-container form {
-    max-width: 400px; /* Adjust form width as needed */
-    margin: 20px auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.7); /* Adjust background color and opacity as needed */
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.contact-container label {
-    margin-top: 10px;
-    font-weight: bold;
-    display: block;
-}
-
-.contact-container input,
-.contact-container textarea {
-    margin-bottom: 15px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 100%;
-}
-
-.contact-container button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-}
-
-.contact-container button:hover {
-    background-color: #45a049;
+    .contact-container h1 {
+        padding-top: 0rem;
+        padding-bottom: 3rem;
+    }
 }
