@@ -28,22 +28,22 @@
         "event": "Cork"
     },
     {
-        "name": "Thiago",
+        "name": "Thiago Hideki",
         "guest_name": "",
         "email": "thiago@test.com",
         "password": "pbkdf2:sha256:600000$I1Y9YqhvGuGEKLBU$a14b8ab5be6c6f30c778d251cc3f113d1474d1ba5255337ad752801e7bfb0e23",
         "event": "Cork"
     },
     {
-        "name": "Maria",
-        "guest_name": "Joo",
+        "name": "Maria Kropesmo",
+        "guest_name": "Joao Kasemiro",
         "email": "maria@test.com",
         "password": "pbkdf2:sha256:600000$gTkOcB1V3E08kdWU$31aec569c27070010165497980e3d29af0ea49203f0e94918f55dbbeb294705c",
         "event": "Paris"
     },
     {
-        "name": "Joao",
-        "guest_name": "Marcio",
+        "name": "Joao Aurelio",
+        "guest_name": "Marcio Aparecido",
         "email": "joao@test.com",
         "password": "pbkdf2:sha256:600000$8fTzjm2ESa9J3P1H$b14b0e8ddb90ee527ef006a87b6bb7ebae2ba24b75f4d33e60beeca7b0a6869b",
         "event": "S\u00e3o Paulo"
