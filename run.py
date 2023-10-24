@@ -1,6 +1,8 @@
 import os
 import json
 from flask import Flask, render_template, request, redirect, url_for, session, abort
+from functools import wraps
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
@@ -16,6 +18,12 @@ json_file_path = "data/members.json"
 if os.path.exists(json_file_path):
     with open(json_file_path, "r") as json_data:
         registrations = json.load(json_data)
+
+def get_stored_hashed_password(email):
+    for registration in registrations:
+        if registration["email"] == email:
+            return registration["password"]
+    return None  # Return None if the email is not found
 
 @app.route("/")
 def index():
@@ -39,11 +47,15 @@ def register():
         name = request.form.get("name")
         guest_name = request.form.get("guest_name")
         email = request.form.get("email")
+        password = request.form.get("password")  # Ensure this line is present
         event = request.form.get("event")
+
+        # Hash the password before storing it
+        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
 
         # Create a registration dictionary
         registration = {"name": name, "guest_name": guest_name,
-                        "email": email, "event": event}
+                        "email": email, "password": hashed_password, "event": event}
 
         # Add registration to the list
         registrations.append(registration)
@@ -61,7 +73,39 @@ def register():
     # Pass the index value to the template
     return render_template("register.html", index=index)
 
+def login_required(func):
+    @wraps(func)
+    def decorated_function(*args, **kwargs):
+        if "user_email" not in session:
+            return redirect(url_for("login"))
+        return func(*args, **kwargs)
+    return decorated_function
+
+def ownership_required(func):
+    @wraps(func)
+    def decorated_function(*args, **kwargs):
+        index = kwargs.get("index")
+
+        if index is not None:
+            registration = registrations[index]
+
+            # Debugging statements
+            print(f"User email in session: {session.get('user_email')}")
+            print(f"Registration email: {registration.get('email')}")
+
+            # Check if the logged-in user owns this registration
+            if session.get("user_email") == registration["email"]:
+                return func(*args, **kwargs)
+            else:
+                abort(403)  # User doesn't have permission
+
+        abort(400)  # Invalid request
+
+    return decorated_function
+
 @app.route("/edit/<int:index>", methods=["GET", "POST"])
+@login_required
+@ownership_required
 def edit(index):
     # Check if the user is logged in
     if "user_email" not in session:
@@ -89,6 +133,8 @@ def edit(index):
     return render_template("edit.html", registration=registration, index=index)
 
 @app.route("/delete/<int:index>")
+@login_required
+@ownership_required
 def delete(index):
     # Check if the user is logged in
     if "user_email" not in session:
@@ -101,6 +147,29 @@ def delete(index):
     else:
         # User doesn't have permission, handle accordingly (redirect, abort, etc.)
         abort(403)  # HTTP 403 Forbidden
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        # Retrieve the hashed password from the stored data
+        stored_hashed_password = get_stored_hashed_password(email)
+
+        # Check if the provided password matches the stored hashed password
+        if stored_hashed_password and check_password_hash(stored_hashed_password, password):
+            session["user_email"] = email
+            return redirect(url_for("index"))
+        else:
+            flash("Invalid credentials")
+
+    return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    session.pop("user_email", None)
+    return redirect(url_for("index"))
 
 if __name__ == "__main__":
     app.run(

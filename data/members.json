@@ -1,32 +1,9 @@
 [
     {
-        "name": "Alan",
-        "guest_name": "Greg",
-        "email": "alan@test.com",
-        "event": "workshop"
-    },
-    {
-        "name": "Madhu",
-        "guest_name": "Dakshit",
-        "email": "madhu@test.com",
-        "event": "conference"
-    },
-    {
-        "name": "Madhu",
+        "name": "Alan Tioshi Araki",
         "guest_name": "",
-        "email": "madhu@test.com",
-        "event": "party"
-    },
-    {
-        "name": "Madhu",
-        "guest_name": "",
-        "email": "madhu@test.com",
-        "event": "party"
-    },
-    {
-        "name": "Madhu",
-        "guest_name": "Greg",
-        "email": "madhu@test.com",
+        "email": "alantioshiaraki@gmail.com",
+        "password": "pbkdf2:sha256:600000$ApFRwknroikOtzFZ$e377aa8ab05b9140816733ee1a33b7a12118f56f362a6eb890ad41970ae306b4",
         "event": "party"
     }
 ]
