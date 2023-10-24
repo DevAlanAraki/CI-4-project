@@ -30,23 +30,28 @@ if os.path.exists(json_file_path):
     with open(json_file_path, "r") as json_data:
         registrations = json.load(json_data)
 
+
 def get_stored_hashed_password(email):
     for registration in registrations:
         if registration["email"] == email:
             return registration["password"]
     return None  # Return None if the email is not found
 
+
 @app.route("/")
 def index():
     return render_template("index.html", registrations=registrations, enumerate=enumerate)
+
 
 @app.route("/about")
 def about():
     return render_template("about.html")
 
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -62,7 +67,8 @@ def register():
         event = request.form.get("event")
 
         # Hash the password before storing it
-        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+        hashed_password = generate_password_hash(
+            password, method='pbkdf2:sha256')
 
         # Create a registration dictionary
         registration = {"name": name, "guest_name": guest_name,
@@ -84,6 +90,7 @@ def register():
     # Pass the index value to the template
     return render_template("register.html", index=index)
 
+
 def login_required(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
@@ -91,6 +98,7 @@ def login_required(func):
             return redirect(url_for("login"))
         return func(*args, **kwargs)
     return decorated_function
+
 
 def ownership_required(func):
     @wraps(func)
@@ -114,6 +122,7 @@ def ownership_required(func):
 
     return decorated_function
 
+
 @app.route("/edit/<int:index>", methods=["GET", "POST"])
 @login_required
 @ownership_required
@@ -132,7 +141,8 @@ def edit(index):
         # Check if the logged-in user owns this registration
         if session["user_email"] == registrations[index]["email"]:
             # Update the registration
-            registrations[index] = {"name": name, "guest_name": guest_name, "email": email, "event": event}
+            registrations[index] = {
+                "name": name, "guest_name": guest_name, "email": email, "event": event}
 
             # Redirect to the index page with the updated registrations
             return redirect(url_for("index"))
@@ -142,6 +152,7 @@ def edit(index):
 
     registration = registrations[index]
     return render_template("edit.html", registration=registration, index=index)
+
 
 @app.route("/delete/<int:index>")
 @login_required
@@ -158,6 +169,7 @@ def delete(index):
     else:
         # User doesn't have permission, handle accordingly (redirect, abort, etc.)
         abort(403)  # HTTP 403 Forbidden
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -177,11 +189,43 @@ def login():
 
     return render_template("login.html")
 
+
 @app.route("/logout")
 def logout():
     # Clear the user's email from the session
     session.pop("user_email", None)
     return redirect(url_for("index"))
+
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+
+        # Validate the form data (you can add more validation as needed)
+
+        # Send email
+        try:
+            msg = Message('New Contact Form Submission',
+                          sender=email,
+                          # Recipient Email (my own email)
+                          recipients=['alanaraki90@gmail.com'])
+
+            msg.body = f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
+
+            mail.send(msg)
+
+            flash("Your message has been sent successfully!", "success")
+        except Exception as e:
+            print(str(e))
+            flash("An error occurred. Please try again later.", "error")
+
+        return redirect(url_for("contact"))
+
+    return render_template("contact.html")
+
 
 if __name__ == "__main__":
     app.run(

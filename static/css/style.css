@@ -586,3 +586,64 @@ tr:hover {
 .login-container button:hover {
     background-color: #45a049;
 }
+
+/* Contact form styles */
+
+.contact-container {
+    font-family: 'Red Hat Text', sans-serif;
+    text-align: center;
+    color: var(--color);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Adjust as needed */
+}
+
+.contact-container h1 {
+    color: #fff; /* Adjust text color as needed */
+}
+
+.contact-container form {
+    max-width: 400px; /* Adjust form width as needed */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7); /* Adjust background color and opacity as needed */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container label {
+    margin-top: 10px;
+    font-weight: bold;
+    display: block;
+}
+
+.contact-container input,
+.contact-container textarea {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.contact-container button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.contact-container button:hover {
+    background-color: #45a049;
+}
