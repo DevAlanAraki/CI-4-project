@@ -8,16 +8,17 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
+mail = Mail(app)
+
 # Flask-Mail configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'alanaraki90@gmail.com'
 app.config['MAIL_PASSWORD'] = 'pqpk utfp fade ciji'
 app.config['MAIL_DEFAULT_SENDER'] = 'alanaraki90@gmail.com'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 
-mail = Mail(app)
 
 # Initialize an empty list to store registration
 registrations = []
@@ -85,10 +86,10 @@ def register():
         session["user_email"] = email
 
         # Redirect to the index page with the updated registrations
-        return redirect(url_for("index"))
+        return render_template("register.html", registration_success=True)
 
     # Pass the index value to the template
-    return render_template("register.html", index=index)
+    return render_template("register.html", registration_success=False)
 
 
 def login_required(func):
@@ -203,8 +204,6 @@ def contact():
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
-
-        # Validate the form data
 
         # Send email
         try:

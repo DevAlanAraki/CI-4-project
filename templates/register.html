@@ -3,6 +3,13 @@
 
 <div class="reg-container">
     <h1>Event Registration</h1>
+
+    {% if registration_success %}
+        <div class="success-message">
+            <p>Registration successful! You are now registered for our next event.</p>
+        </div>
+    {% endif %}
+
     <form action="{{ url_for('register') }}" method="post">
         <label for="name">Rider name:</label>
         <input type="text" id="name" name="name" placeholder="Rider name" required>
