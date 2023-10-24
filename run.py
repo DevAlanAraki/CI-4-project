@@ -194,8 +194,8 @@ def login():
 def logout():
     # Clear the user's email from the session
     session.pop("user_email", None)
-    return redirect(url_for("index"))
 
+    return redirect(url_for("index"))
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():

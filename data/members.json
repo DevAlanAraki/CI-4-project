@@ -1,16 +1,23 @@
 [
     {
-        "name": "Alan Tioshi Araki",
-        "guest_name": "Ben",
+        "name": "Alan Araki",
+        "guest_name": "",
         "email": "alantioshiaraki@gmail.com",
-        "password": "pbkdf2:sha256:600000$9LR5x09EL5oBw40R$7972586db83dfa12716a3eb7c2a4c5a0b77b1cea6d6580bf02427684a4da8429",
-        "event": "party"
+        "password": "pbkdf2:sha256:600000$ACSwmE4iDbAeZOwX$3da79134f27c35ebfbf439dc217ffbf9a3846f79e0c22774fa91f533aa6c0919",
+        "event": "Cork"
     },
     {
-        "name": "Erica Juliana Araki",
+        "name": "Gregory Katslune",
         "guest_name": "",
+        "email": "greg@test.com",
+        "password": "pbkdf2:sha256:600000$XoAYK4COtAA5RcP6$95acb6221feb904fc8a0977f29b09497bdb4166e21a2b21935fe85e99a2d9e9d",
+        "event": "Paris"
+    },
+    {
+        "name": "Erica Juliana",
+        "guest_name": "Ben Silva",
         "email": "erica@test.com",
-        "password": "pbkdf2:sha256:600000$jQvXMwhuKTp0Xk7m$839a358a97d4d668cca2aa39357ef633503545f2e3679ae4241ae8294d528db5",
-        "event": "party"
+        "password": "pbkdf2:sha256:600000$0FjjDqtAOdnXAYu6$24661ddde1a415beac1099807cd5bb0229432e8ea81ac63924b377b6e3de53c2",
+        "event": "S\u00e3o Paulo"
     }
 ]
