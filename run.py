@@ -209,9 +209,9 @@ def contact():
         # Send email
         try:
             msg = Message('New Contact Form Submission',
-                          sender=email,
-                          # Recipient Email (my own email)
-                          recipients=['alanaraki90@gmail.com'])
+                sender=email,
+                recipients=['alanaraki90@gmail.com'],
+                html=f"<p>Name: {name}</p><p>Email: {email}</p><p>Message:<br>{message}</p>")
 
             msg.body = f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
 
@@ -219,8 +219,9 @@ def contact():
 
             flash("Your message has been sent successfully!", "success")
         except Exception as e:
-            print(str(e))
-            flash("An error occurred. Please try again later.", "error")
+            error_message = f"An error occurred. Please try again later. Details: {str(e)}"
+            print(error_message)
+            flash(error_message, "error")
 
         return redirect(url_for("contact"))
 
